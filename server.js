@@ -25,9 +25,10 @@ app.use((req, res, next) => {
 });
 
 // blocking "maintenance" middleware without next:
-app.use((req, res, next) => {
-  res.render("maintenance.hbs");
-});
+// app.use((req, res, next) => {
+//   res.render("maintenance.hbs");
+//   next();
+// });
 
 // NB: use static folder only after the "maintenance" middleware
 // otherwise it will be displayed even though it shouldn't.
@@ -47,6 +48,12 @@ app.get("/", (request, response) => {
 app.get("/about", (request, response) => {
   response.render("about.hbs", {
     pageTitle: "About page",
+  });
+});
+
+app.get("/projects", (req, res) => {
+  res.render("projects.hbs", {
+    pageTitle: "Projects"
   });
 });
 
