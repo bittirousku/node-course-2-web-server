@@ -54,6 +54,8 @@ app.get("/bad", (req, res) => {
   res.send({status: "Error", errorMessage: "Bad page reached."});
 });
 
-app.listen(3000, () => {
-  console.log("Server is up on port 3000");
+// heroku port variable or default
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
